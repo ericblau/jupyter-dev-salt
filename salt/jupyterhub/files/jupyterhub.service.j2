@@ -1,0 +1,15 @@
+{%set aversion = salt['pillar.get']("hostdata:%s:anaconda" % grains['host'],{} ) %}
+{%set install_dir = salt['pillar.get']("anaconda:%s:install_dir" % aversion ,{} ) %}
+
+[Unit]
+Description=Jupyterhub
+
+[Service]
+User=jupyter
+Environment="PATH=/bin:/sbin:/{{ install_dir }}/bin:/usr/bin/usr/sbin"
+Environment="JUPYTERHUB_CRYPT_KEY=b3e54417b38fad37bd754b7855bc4cf34ea689c355a0e520effd4ee226d612f8"
+ExecStart={{ install_dir }}/bin/jupyterhub -f /srv/jupyter/jupyterhub_config.py
+WorkingDirectory=/srv/jupyter
+
+[Install]
+WantedBy=multi-user.target

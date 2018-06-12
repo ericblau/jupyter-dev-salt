@@ -1,0 +1,15 @@
+{% set jupyter_map = salt['grains.filter_by']({
+    'RedHat': {
+        'service': 'jupyterhub',
+        'jupyter_ssl_cert': '/srv/jupyter/cert.pem',
+        'jupyter_ssl_key': '/srv/jupyter/key.pem',
+        'jupyter_pid': '/var/run/jupyterhub.pid',
+        'jupyter_config': '/srv/jupyter/jupyterhub_config.py',
+        'jupyter_config_src': 'salt://jupyterhub/files/jupyterhub_config.j2',        
+        'jupyter_service': '/lib/systemd/system/jupyterhub.service',
+        'jupyter_service_src': 'salt://jupyterhub/files/jupyterhub.service.j2',
+        'jupyter_log': '/var/log/jupyter/jupyter.log',
+        'logrotate_conf': '/etc/logrotate.d/jupyterhub',
+        'logrotate_conf_src': ' salt://jupyterhub/files/logrotate.j2',
+    },
+}, default='RedHat', merge=salt['pillar.get']('jupyter_map:lookup')) %}

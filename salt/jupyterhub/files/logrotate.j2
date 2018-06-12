@@ -1,0 +1,11 @@
+{% from "jupyterhub/map.jinja" import jupyter_map with context %}
+{{ jupyter_map.jupyter_log }}
+{
+    missingok
+    rotate 520
+    compress
+    delaycompress
+    notifempty
+    copytruncate
+    daily
+}

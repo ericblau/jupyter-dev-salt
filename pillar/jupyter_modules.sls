@@ -1,0 +1,15 @@
+jupyter_modules:
+   - {name: notebook, method: conda}
+   - {name: jupyter_console, method: conda}
+   - {name: ipyparallel, method: conda}
+   - {name: ipykernel, method: conda}
+   - {name: nbconvert, method: conda}
+   - {name: pandoc, method: conda}
+   - {name: ipywidgets, method: conda}
+   - {name: jupyterlab, method: conda}
+   - {name: nodejs, method: conda}
+   - {name: oauthenticator, method: pip}
+   - {name: 'globus_sdk[jwt]', method: pip}
+   - {name: '-e /opt/local/singularity-spawner', method: pip}
+   - {name: configurable-http-proxy, method: conda, repo: conda-forge}
+   - {name: sqlalchemy, method: conda}
